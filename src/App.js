@@ -1,11 +1,22 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import FunctionInput from './components/FunctionInput';
+import Graph from './components/Graph';
 import './App.css';
-import InputField from './InputArea/InputField.jsx'; 
 
-function App() {
+const App = () => {
+  const [functions, setFunctions] = useState([]);
+
+  const addFunction = (newFunction) => {
+    setFunctions([...functions, newFunction]);
+  };
+
   return (
-    <InputField/>
+    <div className="App">
+      <h1>Graphing Calculator</h1>
+      <FunctionInput onAddFunction={addFunction} />
+      <Graph functions={functions} />
+    </div>
   );
-}
+};
 
 export default App;
